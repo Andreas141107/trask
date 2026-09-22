@@ -52,19 +52,19 @@ class Team extends Model
         return $this->hasMany(Transaction::class);
     }
 
-    public function whatsappLink(): HasOne
+    public function telegramBot(): HasOne
     {
-        return $this->hasOne(WhatsappLink::class);
+        return $this->hasOne(TelegramBot::class);
     }
 
-    public function whatsappLinks(): BelongsToMany
+    public function telegramBots(): BelongsToMany
     {
-        return $this->belongsToMany(WhatsappLink::class, 'team_whatsapps')
+        return $this->belongsToMany(TelegramBot::class, 'team_telegrams')
             ->withTimestamps();
     }
 
-    public function whatsappLogs(): HasMany
+    public function telegramLogs(): HasMany
     {
-        return $this->hasMany(WhatsappLog::class);
+        return $this->hasMany(TelegramLog::class);
     }
 }

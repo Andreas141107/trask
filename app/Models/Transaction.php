@@ -18,8 +18,8 @@ class Transaction extends Model
         'amount',
         'description',
         'category',
-        'source', // 'web', 'whatsapp'
-        'whatsapp_sender',
+        'source', // 'web', 'telegram'
+        'telegram_sender',
         'transacted_at',
     ];
 

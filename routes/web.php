@@ -5,8 +5,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TelegramWebhookController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\WhatsappWebhookController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,17 +23,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
     Route::post('/teams/join', [TeamController::class, 'join'])->name('teams.join');
     Route::post('/teams/{team}/switch', [TeamController::class, 'switchTeam'])->name('teams.switch');
-    Route::get('/whatsapp', [WhatsappWebhookController::class, 'index'])->name('whatsapp.index');
-    Route::patch('/whatsapp', [WhatsappWebhookController::class, 'updateLink'])->name('whatsapp.update');
-    Route::post('/whatsapp/test-connection', [WhatsappWebhookController::class, 'testConnection'])->name('whatsapp.test-connection');
-    Route::get('/whatsapp/history', [WhatsappWebhookController::class, 'history'])->name('whatsapp.history');
-    Route::post('/whatsapp/send', [WhatsappWebhookController::class, 'sendFromWeb'])->name('whatsapp.send');
+    Route::get('/telegram', [TelegramWebhookController::class, 'index'])->name('telegram.index');
+    Route::patch('/telegram', [TelegramWebhookController::class, 'updateLink'])->name('telegram.update');
+    Route::post('/telegram/test-connection', [TelegramWebhookController::class, 'testConnection'])->name('telegram.test-connection');
+    Route::get('/telegram/history', [TelegramWebhookController::class, 'history'])->name('telegram.history');
+    Route::post('/telegram/send', [TelegramWebhookController::class, 'sendFromWeb'])->name('telegram.send');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-// WhatsApp webhook (no auth required)
-Route::post('/api/webhooks/whatsapp', [WhatsappWebhookController::class, 'handleWebhook'])->withoutMiddleware(['auth', 'verified']);
+
+// Telegram webhook (no auth required)
+Route::post('/api/webhooks/telegram', [TelegramWebhookController::class, 'handleWebhook'])->withoutMiddleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

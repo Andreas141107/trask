@@ -77,10 +77,10 @@
                 Kelola Tim
             </a>
 
-            <a href="{{ route('whatsapp.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium {{ request()->routeIs('whatsapp.*') ? 'bg-indigo-600 text-white' : 'hover:bg-slate-800 hover:text-white text-slate-300' }} transition">
-                <i data-lucide="message-square" class="w-4 h-4"></i>
-                WhatsApp Bot 2-Way
-                <span class="ml-auto text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded font-medium">Aktif</span>
+            <a href="{{ route('telegram.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium {{ request()->routeIs('telegram.*') ? 'bg-indigo-600 text-white' : 'hover:bg-slate-800 hover:text-white text-slate-300' }} transition">
+                <i data-lucide="bot" class="w-4 h-4"></i>
+                Telegram Bot 2-Way
+                <span class="ml-auto text-[10px] bg-sky-500/20 text-sky-400 px-1.5 py-0.5 rounded font-medium">Aktif</span>
             </a>
         </nav>
 
@@ -118,10 +118,10 @@
             </div>
 
             <div class="flex items-center gap-2 lg:gap-3 shrink-0">
-                <!-- WhatsApp Quick Status Indicator -->
-                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-full text-xs font-medium whitespace-nowrap">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    Bot WA Terhubung
+                <!-- Telegram Quick Status Indicator -->
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-sky-50 border border-sky-200 text-sky-700 rounded-full text-xs font-medium whitespace-nowrap">
+                    <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                    Bot Telegram Terhubung
                 </div>
 
                 <!-- Profile Dropdown (desktop) -->

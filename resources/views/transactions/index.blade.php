@@ -9,7 +9,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
             <h2 class="text-xl font-bold text-slate-800">Catatan Pemasukan & Pengeluaran</h2>
-            <p class="text-sm text-slate-500">Semua transaksi tim tercatat otomatis via web & bot WhatsApp</p>
+            <p class="text-sm text-slate-500">Semua transaksi tim tercatat otomatis via web & bot Telegram</p>
         </div>
         <div class="flex items-center gap-2">
             <button @click="modalOpen = true; modalType = 'income'" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium flex items-center gap-2 transition shadow-sm">
@@ -58,7 +58,7 @@
                 icon="radio"
                 :options="[
                     ['value' => 'web', 'label' => 'Web Dashboard', 'icon' => 'monitor', 'iconClass' => 'bg-indigo-100 text-indigo-600'],
-                    ['value' => 'whatsapp', 'label' => 'WhatsApp Bot', 'icon' => 'message-square', 'iconClass' => 'bg-emerald-100 text-emerald-600'],
+                    ['value' => 'telegram', 'label' => 'Telegram Bot', 'icon' => 'send', 'iconClass' => 'bg-sky-100 text-sky-600'],
                 ]"
             />
             <button type="submit" class="px-3 py-2 bg-indigo-50 text-indigo-600 rounded-lg text-sm font-medium hover:bg-indigo-100 transition">Filter</button>
@@ -122,9 +122,9 @@
                         </td>
                         <td class="py-3 px-4 whitespace-nowrap">
                             <div class="flex items-center gap-2">
-                                <span class="p-1 {{ $tx->source === 'whatsapp' ? 'bg-emerald-100 text-emerald-700' : 'bg-indigo-100 text-indigo-700' }} rounded text-[10px] font-bold uppercase">{{ $tx->source }}</span>
+                                <span class="p-1 {{ $tx->source === 'telegram' ? 'bg-sky-100 text-sky-700' : 'bg-indigo-100 text-indigo-700' }} rounded text-[10px] font-bold uppercase">{{ $tx->source }}</span>
                                 <div>
-                                    <p class="text-xs font-medium text-slate-800">{{ $tx->source === 'whatsapp' ? ($tx->whatsapp_sender ?? 'Bot') : ($tx->user->name ?? 'User') }}</p>
+                                    <p class="text-xs font-medium text-slate-800">{{ $tx->source === 'telegram' ? ($tx->telegram_sender ?? 'Bot') : ($tx->user->name ?? 'User') }}</p>
                                 </div>
                             </div>
                         </td>

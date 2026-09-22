@@ -125,9 +125,9 @@
             <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
                 <h3 class="font-bold text-slate-800 mb-4">Aksi Cepat</h3>
                 <div class="grid grid-cols-2 gap-3">
-                    <a href="/whatsapp" class="bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 font-medium py-3 px-4 rounded-lg text-sm flex flex-col items-center gap-2 transition text-center">
-                        <i data-lucide="message-square" class="w-5 h-5"></i>
-                        Input via WhatsApp
+                    <a href="/telegram" class="bg-sky-50 hover:bg-sky-100 border border-sky-200 text-sky-700 font-medium py-3 px-4 rounded-lg text-sm flex flex-col items-center gap-2 transition text-center">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                        Input via Telegram
                     </a>
                     <a href="/capitals" class="bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-700 font-medium py-3 px-4 rounded-lg text-sm flex flex-col items-center gap-2 transition text-center">
                         <i data-lucide="plus" class="w-5 h-5"></i>
@@ -213,31 +213,31 @@
                 </div>
             </div>
 
-            <!-- WhatsApp Bot Status -->
-            <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-xl p-6 text-white">
+            <!-- Telegram Bot Status -->
+            <div class="bg-gradient-to-r from-sky-500 to-sky-600 rounded-xl p-6 text-white">
                 <div class="flex items-center justify-between mb-4">
-                    <h3 class="font-bold text-lg">WhatsApp Bot 2-Way</h3>
+                    <h3 class="font-bold text-lg">Telegram Bot 2-Way</h3>
                     <div class="px-3 py-1 bg-white/20 rounded-full text-xs font-medium flex items-center gap-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
-                        {{ $whatsappActive ? 'Aktif' : 'Non-Aktif' }}
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-300 animate-pulse"></span>
+                        {{ $telegramActive ? 'Aktif' : 'Non-Aktif' }}
                     </div>
                 </div>
-                <p class="text-sm text-emerald-100 mb-4">Gunakan bot WhatsApp untuk input transaksi langsung dari chat.</p>
+                <p class="text-sm text-sky-100 mb-4">Gunakan bot Telegram untuk input transaksi langsung dari chat.</p>
                 <div class="space-y-3">
                     <div class="flex items-center gap-3 text-sm">
                         <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                            <i data-lucide="phone" class="w-3 h-3"></i>
+                            <i data-lucide="bot" class="w-3 h-3"></i>
                         </div>
-                        <span>+62 812-3456-7890</span>
+                        <span>@trask_bot</span>
                     </div>
                     <div class="flex items-center gap-3 text-sm">
                         <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
                             <i data-lucide="message-square" class="w-3 h-3"></i>
                         </div>
-                        <span>{{ $whatsappLogsCount }} interaksi tercatat</span>
+                        <span>{{ $telegramLogsCount }} interaksi tercatat</span>
                     </div>
                 </div>
-                <a href="/whatsapp" class="mt-6 block text-center bg-white text-emerald-600 hover:bg-emerald-50 font-medium py-2.5 rounded-lg text-sm transition">
+                <a href="/telegram" class="mt-6 block text-center bg-white text-sky-600 hover:bg-sky-50 font-medium py-2.5 rounded-lg text-sm transition">
                     Buka Simulator & Log
                 </a>
             </div>

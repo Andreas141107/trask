@@ -77,8 +77,8 @@ class DashboardController extends Controller
             ->limit(3)
             ->get();
 
-        // WhatsApp bot status
-        $whatsappActive = $team->whatsappLink()->exists();
+        // Telegram bot status
+        $telegramActive = $team->telegramBot()->exists();
 
         return view('dashboard', [
             'team' => $team,
@@ -86,8 +86,8 @@ class DashboardController extends Controller
             'cashflowDays' => $cashflowDays,
             'recentTransactions' => $recentTransactions,
             'lowStockProducts' => $lowStockProducts,
-            'whatsappActive' => $whatsappActive,
-            'whatsappLogsCount' => $team->whatsappLogs()->count(),
+            'telegramActive' => $telegramActive,
+            'telegramLogsCount' => $team->telegramLogs()->count(),
         ]);
     }
 }

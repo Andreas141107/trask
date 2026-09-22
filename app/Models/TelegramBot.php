@@ -7,15 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class WhatsappLink extends Model
+class TelegramBot extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'team_id',
-        'phone_number',
-        'api_key',
-        'provider',
+        'bot_username',
+        'bot_token',
         'webhook_token',
         'is_active',
     ];
@@ -34,7 +33,7 @@ class WhatsappLink extends Model
 
     public function teams(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class, 'team_whatsapps')
+        return $this->belongsToMany(Team::class, 'team_telegrams')
             ->withTimestamps();
     }
 }

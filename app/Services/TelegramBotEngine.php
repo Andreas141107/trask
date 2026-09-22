@@ -6,9 +6,9 @@ use App\Models\Product;
 use App\Models\Team;
 use App\Models\User;
 
-class WhatsappBotEngine
+class TelegramBotEngine
 {
-    public function __construct(protected Team $team, protected ?string $senderNumber = null) {}
+    public function __construct(protected Team $team, protected ?string $senderId = null) {}
 
     public function processCommand(string $message): string
     {
@@ -65,8 +65,8 @@ class WhatsappBotEngine
             'amount' => $amount,
             'description' => $description,
             'category' => $category,
-            'source' => 'whatsapp',
-            'whatsapp_sender' => $this->senderNumber,
+            'source' => 'telegram',
+            'telegram_sender' => $this->senderId,
             'transacted_at' => now(),
         ]);
 
@@ -125,8 +125,8 @@ class WhatsappBotEngine
             'amount' => $amount,
             'description' => $product->name.' x'.$quantity,
             'category' => $product->category ?? 'penjualan',
-            'source' => 'whatsapp',
-            'whatsapp_sender' => $this->senderNumber,
+            'source' => 'telegram',
+            'telegram_sender' => $this->senderId,
             'transacted_at' => now(),
         ]);
 
@@ -215,22 +215,15 @@ class WhatsappBotEngine
 
     protected function resolveUserId(): ?int
     {
-        if ($this->senderNumber === null || trim($this->senderNumber) === '') {
+        if ($this->senderId === null || trim($this->senderId) === '') {
             return null;
         }
 
-        $digits = (string) preg_replace('/\D/', '', $this->senderNumber);
-        if (str_starts_with($digits, '0')) {
-            $digits = '62'.substr($digits, 1);
-        }
-
-        $candidates = array_unique(array_filter([$this->senderNumber, '+'.$digits]));
-        if (str_starts_with($digits, '62')) {
-            $candidates[] = '0'.substr($digits, 2);
-        }
-
-        $user = $this->team->users()->whereIn('phone', $candidates)->first()
-            ?? User::whereIn('phone', $candidates)->first();
+        // Try to find user by telegram sender ID or phone-like format
+        $user = $this->team->users()
+            ->where('phone', $this->senderId)
+            ->first()
+            ?? User::where('phone', $this->senderId)->first();
 
         return $user?->id;
     }
